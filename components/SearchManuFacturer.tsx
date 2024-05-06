@@ -39,7 +39,7 @@ export default function SearchManuFacturer({
               displayValue={(manufacturer: string) => manufacturer}
               onChange={(event) => setQuery(event.currentTarget.value)}
             />
-            {/* <Transition
+            <Transition
               as={Fragment}
               leave="transition eas-in duration-100"
               leaveFrom="opacity-100"
@@ -47,26 +47,30 @@ export default function SearchManuFacturer({
               afterLeave={() => setQuery("")}
             >
               <Combobox.Options>
-                {filteredManufacturers.length === 0 && query !== "" && (
+                {filteredManufacturers.length === 0 && query !== "" ? (
                   <Combobox.Option
                     value={query}
                     className="search-manufacturer__option"
                   >
                     Create "{query}"
                   </Combobox.Option>
-                ):
-                (
+                ) : (
                   filteredManufacturers.map((item) => (
                     <Combobox.Option
                       key={item}
                       value={item}
-                      className={({active}) => `
-                      reative search-manufacturer__option ${active ? 'bg-primary-blue text-white' : 'text-gary-900'}
-                      `}>{item}</Combobox.Option>
+                      className={({ active }) => `
+                      reative search-manufacturer__option ${
+                        active ? "bg-primary-blue text-white" : "text-gary-900"
+                      }
+                      `}
+                    >
+                      {item}
+                    </Combobox.Option>
                   ))
                 )}
               </Combobox.Options>
-            </Transition> */}
+            </Transition>
           </Combobox.Button>
         </div>
       </Combobox>
